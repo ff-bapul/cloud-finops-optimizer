@@ -35,6 +35,23 @@ graph TD
     RuleEngine -->|Write Findings| DB
 ```
 
+**Detailed Architecture Breakdown:**
+The system is built on a decoupled, three-tier architecture ensuring scalability, maintainability, and clear separation of concerns.
+
+1. **Frontend Stack (Presentation Layer)**:
+   - **Streamlit Dashboard**: Acts as the primary user interface for Cloud Engineers. It is a lightweight, Python-based web app that allows users to interact with the underlying API seamlessly. It handles file uploads and provides intuitive controls to trigger data analysis and remediation workflows.
+   - **Plotly Charts**: Integrated within Streamlit to provide dynamic, interactive data visualizations. This is used to render cost breakdowns and potential savings charts, making it easy for users to comprehend optimization opportunities at a glance.
+
+2. **Backend Stack (Application Layer)**:
+   - **FastAPI Router**: Serves as the high-performance entry point for all backend operations. It exposes robust RESTful HTTP endpoints that the frontend communicates with, routing requests to the appropriate underlying services.
+   - **Data Ingestion Service**: Triggered by the API router when new billing data is uploaded. It is responsible for parsing, validating, and structuring raw data from multiple cloud providers (AWS, Azure, GCP) into a standardized format before upserting it into the database.
+   - **Rule Evaluation Engine**: The core processing brain of the platform. When an analysis is requested, it retrieves cloud resources and evaluates them against defined rules. It safely executes dynamic Python expressions against resource metadata, identifies cost inefficiencies, and uses templating to generate exact, actionable CLI remediation commands.
+
+3. **Persistence Layer (Data Tier)**:
+   - **SQLite Database**: A lightweight, file-based relational database currently used for simplified local development and demonstration purposes.
+   - **SQLAlchemy ORM**: Acts as an abstraction layer over the SQL database. It defines the schema via Python models and executes queries. This ensures the application is database-agnostic and can seamlessly migrate to production-grade relational databases like PostgreSQL in a cloud deployment.
+
+
 ---
 
 ## 🔄 Data & Execution Flow
@@ -66,6 +83,12 @@ sequenceDiagram
     FastAPI-->>Streamlit: Return JSON Data
     Streamlit->>User: Render Visualizations & Remediation Queue
 ```
+
+**Execution Flow Details:**
+1. **Data Ingestion**: The user uploads cloud billing data (CSV/JSON) via the Streamlit UI. The FastAPI backend receives this and upserts the resources and metadata into the database.
+2. **Rule Evaluation**: The user triggers the analysis. The backend invokes the Rule Engine, which fetches active rules and resources from the database. It dynamically evaluates Python expressions using `simpleeval` to find inefficiencies, templates exact CLI remediation commands, and saves the findings back to the database.
+3. **Presentation**: The Streamlit UI retrieves the generated findings from the API to render interactive charts and an actionable remediation queue.
+
 
 ---
 
