@@ -1,0 +1,5 @@
+resource_id,resource_type,state,cpu_utilization,cost,region
+vol-01234abcd,EBS,available,,20.0,us-east-1
+vol-09876efgh,EBS,in-use,,50.0,us-east-1
+i-0abcd1234,EC2,running,2.5,150.0,us-west-2
+i-0efgh5678,EC2,stopped,,10.0,us-west-2

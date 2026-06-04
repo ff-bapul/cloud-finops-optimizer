@@ -1,0 +1,25 @@
+[
+  {
+    "resource_id": "disk-001",
+    "resource_type": "ManagedDisk",
+    "state": "Unattached",
+    "cost": 15.5,
+    "region": "eastus"
+  },
+  {
+    "resource_id": "vm-001",
+    "resource_type": "VirtualMachine",
+    "state": "Running",
+    "cpu_utilization": 85.0,
+    "cost": 250.0,
+    "region": "eastus"
+  },
+  {
+    "resource_id": "vm-002",
+    "resource_type": "VirtualMachine",
+    "state": "Running",
+    "cpu_utilization": 3.0,
+    "cost": 250.0,
+    "region": "eastus"
+  }
+]
