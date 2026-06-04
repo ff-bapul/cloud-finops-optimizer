@@ -13,7 +13,7 @@ Initiated "Lead Architect mode". Requested to build a Python-based, API-first Cl
 ## 2026-06-03 00:35:59 (Local Time)
 
 **User Prompt:**
-yes (Approved Phase 1: Foundation & Database implementation).
+Approved Phase 1: Foundation & Database implementation.
 
 **Summary of Generated Changes:**
 - Created `requirements.txt` with necessary dependencies.
@@ -24,7 +24,7 @@ yes (Approved Phase 1: Foundation & Database implementation).
 ## 2026-06-03 00:38:28 (Local Time)
 
 **User Prompt:**
-yes (Approved Phase 2: Core Domain Logic).
+Approved Phase 2: Core Domain Logic.
 
 **Summary of Generated Changes:**
 - Created `app/services/ingestion.py` using Pandas to safely parse `.csv` and `.json` billing exports, mapping dynamic fields into the SQLite DB.
@@ -33,7 +33,7 @@ yes (Approved Phase 2: Core Domain Logic).
 ## 2026-06-03 00:40:16 (Local Time)
 
 **User Prompt:**
-yes (Approved Phase 3: API Layer).
+Approved Phase 3: API Layer.
 
 **Summary of Generated Changes:**
 - Created `app/schemas/schemas.py` to strongly type input and output with Pydantic for validation.
